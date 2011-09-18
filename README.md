@@ -104,6 +104,7 @@ Right now, Kerning.js supports kerning, color, size, and transforms per-letter, 
 
 * Application of rules on dynamically added or modified elements.
 * More compact and refined CSS rules
+* Visual kerning tool with automatic rule generation
 
 License
 -------
