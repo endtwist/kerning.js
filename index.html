@@ -158,6 +158,16 @@
         font: 700 2.4rem/3.6rem 'Helvetica Neue', Arial, Helvetica, sans-serif;
     }
     
+    h1.demo-off span, h5.demo-off span {
+        color: #000 !important;
+        -webkit-transform: none !important;
+        -moz-transform: none !important;
+        -o-transform: none !important;
+        transform: none !important;
+        margin: 0 !important;
+        font-size: inherit !important;
+    }
+    
     pre {
         background: #efefef;
         -webkit-box-shadow: 1px 1px 0 #cfcfcf,
@@ -181,6 +191,16 @@
                                 9px 9px 0 #afafaf,
                                 10px 10px 0 #afafaf;
             -webkit-transform: translate3d(-5px,-5px,0);
+        }
+    
+    #toggle-demo {
+        position: fixed;
+        top: 0.5rem;
+        right: 60px;
+    }
+    
+        #toggle-demo span {
+            font-weight: 700;
         }
     
     #hello-goodbye {
@@ -373,6 +393,7 @@
     </article>
   </section>
   
+  <a href="#" id="toggle-demo">Turn demo <span>off</span></a>
   <a href="http://github.com/endtwist/kerning.js"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/c641758e06304bc53ae7f633269018169e7e5851/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -391,6 +412,12 @@
           rowheight = 14;
           makehugrid();
           setgridonload();
+          
+          $('#toggle-demo').click(function() {
+              $('h1, h5').toggleClass('demo-off');
+              $('span', this).html($('h1').hasClass('demo-off') ? 'on' : 'off');
+              return false;
+          });
       });
   </script>
 </body>
