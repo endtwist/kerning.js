@@ -160,9 +160,28 @@
     
     pre {
         background: #efefef;
-        -webkit-box-shadow: 2px 2px 0 #cfcfcf;
+        -webkit-box-shadow: 1px 1px 0 #cfcfcf,
+                            2px 2px 0 #cfcfcf,
+                            3px 3px 0 #cfcfcf,
+                            4px 4px 0 #cfcfcf,
+                            5px 5px 0 #cfcfcf;
+        -webkit-transition: all 0.1s linear;
         padding: 20px;
     }
+    
+        pre:hover {
+            -webkit-box-shadow: 1px 1px 0 #afafaf,
+                                2px 2px 0 #afafaf,
+                                3px 3px 0 #afafaf,
+                                4px 4px 0 #afafaf,
+                                5px 5px 0 #afafaf,
+                                6px 6px 0 #afafaf,
+                                7px 7px 0 #afafaf,
+                                8px 8px 0 #afafaf,
+                                9px 9px 0 #afafaf,
+                                10px 10px 0 #afafaf;
+            -webkit-transform: translate3d(-5px,-5px,0);
+        }
     
     #hello-goodbye {
         -letter-size: _ _ _ _ _ 0.5em;
