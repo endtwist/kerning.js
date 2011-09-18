@@ -6,10 +6,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>-letter.js</title>
+  <title>Kerning.js</title>
+  <link href="headsupgrid/hugrid.css" type="text/css" rel="stylesheet" />
   <style type="text/css">
     html, body, div, span, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    h1, h2, h3, h4, h5, h6, p, blockquote,
     abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
     small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
     fieldset, form, label, legend,
@@ -28,43 +29,350 @@
     footer, header, hgroup, menu, nav, section {
       display: block;
     }
-    body { font:13px/1.231 "Helvetica Neue", Helvetica, sans-serif; }
+    body { font: 13px/1.231 "Helvetica Neue", Helvetica, sans-serif; }
     
     html, body {
-        overflow: hidden;
-        text-wrap: none;
-        text-align: center;
-        background: #fffad5;
+        background: #fff;
     }
     
-    p {
-        visibility: hidden;
-        -word-transform: -transform-group(rotate(10deg))
-                         -transform-group(rotate(-10deg));
-        font-size: 5em;
-        color: #bd4932;
-        text-shadow: 0 3px 5px rgba(189, 75, 50, 0.5);
-        margin: 200px 0 0;
+    .clearfix:before, .clearfix:after { content: ""; display: table; }
+    .clearfix:after { clear: both; }
+    .clearfix { zoom: 1; }
+    
+    header, section {
+        width: 724px;
+        margin: 0 auto 3.6rem;
     }
+    
+        #introduction {
+            margin-bottom: 1.8rem;
+        }
+        
+        #colophon {
+            margin-top: -3.6rem;
+        }
+        
+    article {
+        float: left;
+        margin-bottom: 1.8rem;
+        width: 350px;
+    }
+    
+        article.left-column {
+            margin-right: 24px;
+        }
+        
+        #features article {
+            height: 14.4rem;
+        }
+        
+        #more-specific article {
+            height: 18rem;
+        }
+
+    a {
+        color: #f5474b;
+    }
+
+    p {
+        font-size: 1.2rem;
+        font-weight: 200;
+        line-height: 1.8rem;
+        padding: 0 0 1.2rem;
+    }
+    
+        #getting-started p {
+            padding: 0;
+        }
     
     h1 {
+        position: relative;
+        font: 10rem garamond-premier-pro-caption,serif;
+        -letter-kern: -letter-pairs('Ke': -7px, 'g.': 2px, '.j': -5px);
         visibility: hidden;
-        font-size: 10em;
-        /* You can skip -transform-groups if you don't use spaces in the transforms,
-           and limit each letter to a single transform. */
-        -letter-transform: -letter-repeats(even: rotate(5deg), odd: rotate(-5deg));
-        -letter-color: -letter-if-font('Helvetica Neue': -letter-repeats(even: #db9e36, odd: #bd4932));
-        -letter-kern: -letter-pairs('Ke': 2px, 'g.': 1px, '.j': -13px);
-        text-shadow: 0 3px 5px rgba(189, 75, 50, 0.5);
+        margin: 0 0 0 -0.75rem;
+        line-height: 18rem;
+    }
+    
+        h1 .char1, h1 .char7, h1 .char8 {
+            border-right: 1px solid transparent;
+        }
+    
+        h1:hover .char1, h1:hover .char7, h1:hover .char8 {
+            border-color: #ccc;
+        }
+
+        h1:hover .char2:before, h1:hover .char8:before, h1:hover .char9:before {
+            content: '';
+            position: absolute;
+            top: 7rem;
+            width: 0;
+            height: 0;
+            border: 5px solid;
+            border-color: transparent #ccc transparent transparent;
+        }
+        
+            h1:hover .char2:before {
+                left: 6.9rem;
+            }
+            
+            h1:hover .char8:before {
+                left: 32.15rem;
+            }
+
+            h1:hover .char9:before {
+                left: 34.6rem;
+            }
+    
+    h2 {
+        position: relative;
+        top: -5.6rem;
+        margin-bottom: -5.6rem;
+        font: italic 1.8rem garamond-premier-pro-caption,serif;
+        color: #f5474b;
+        pointer-events: none;
+    }
+    
+    h3 {
+        position: relative;
+        font: 700 2.4rem/3.6rem garamond-premier-pro-caption,serif;
+    }
+    
+        h3:before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.9rem;
+            width: 0;
+            height: 0;
+            border: 15px solid;
+            border-color: transparent transparent transparent #eee;
+        }
+    
+    h4 {
+        font: italic 1.6rem/1.8rem garamond-premier-pro-caption,serif;
+    }
+    
+    h5 {
+        visibility: hidden;
+        font: 700 2.4rem/3.6rem 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+    
+    pre {
+        background: #efefef;
+        -webkit-box-shadow: 2px 2px 0 #cfcfcf;
+        padding: 20px;
+    }
+    
+    #hello-goodbye {
+        -letter-size: _ _ _ _ _ 0.5em;
+    }
+    
+    #pixel-perfect {
+        -letter-kern: 1px 1px 0 0 0
+                      1px 0 2px 0 0
+                      0 0 0;
+    }
+    
+    #pantone-please {
+        /* #f5474b is Pantone Red 032 M, if you were curious. */
+        -word-color: #f5474b #000000;
+    }
+    
+    #little-lean {
+        -letter-transform: skew(-5deg) none
+                           none none
+                           none none
+                           skew(-5deg);
+    }
+    
+    #helvetica-fallback {
+        font-family: 'FakeFont',
+                     Helvetica Neue,
+                     sans-serif;
+    
+        -word-color: -word-if-font(
+            'Helvetica Neue': #000 #f5474b
+        );
+    }
+    
+    #mississippi {
+        -letter-color: -letter-pairs(
+            'ss': #777,
+            'pp': #f5474b
+        );
+    }
+    
+    #double-bubble {
+        -letter-transform: -letter-repeats(
+            2n+1: translate3d(0,-5px,0),
+            even: translate3d(0,5px,0)
+        );
+    }
+    
+    #red-on-webkit {
+        -webkit-word-color: #f5474b;
+    }
+    
+    #grey-on-mac {
+        -mac-word-color: #777;
     }
   </style>
+  <script type="text/javascript" src="http://use.typekit.com/nfd4dzs.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
-  <p>This is</p>
-  <h1>Kerning.js</h1>
+  <header>
+    <h1>Kerning.js</h1>
+    <h2>Take control of your web typography.</h2>
+  </header>
+  
+  <section id="introduction">
+    <p>CSS, meet kerning. Kerning, meet CSS. Kern, style, transform, and scale your web<br>type with real CSS rules, automatically.</p>
+    <p>Print designers have had it easy for way too long. This is 2011; the web has been around for a decade, yet web designers don&rsquo;t get full control over their typography? Forget that, use Kerning.js!</p>
+  </section>
+
+  <section id="getting-started">
+    <h3>Getting started</h3>
+    <p>Using Kerning.js is as easy as including a single script in your page. Just&hellip;</p>
+    <pre>&lt;script src="kerning.js"&gt;&lt;/script&gt;</pre>
+    <p>Done.</p>
+  </section>
+  
+  <section id="features" class="clearfix">
+    <h3>Features</h3>
+    <article class="left-column">
+      <h4>Kerning</h4>
+      <h5 id="pixel-perfect">Pixel perfect.</h5>
+      <pre>
+#pixel-perfect {
+    -letter-kern: 1px 1px 0 0 0
+                  1px 0 2px 0 0
+                  0 0 0;
+}
+</pre>
+    </article>
+
+    <article class="right-column">
+      <h4>Size adjustment</h4>
+      <h5 id="hello-goodbye">Hello &amp; goodbye.</h5>
+      <pre>
+#hello-goodbye {
+    -letter-size: _ _ _ _ _ 0.5em;
+}
+</pre>
+    </article>
+
+    <article class="left-column">
+      <h4>Color</h4>
+      <h5 id="pantone-please">Pantone please.</h5>
+      <pre>
+#pantone-please {
+    -word-color: #f5474b #000000;
+}
+</pre>
+    </article>
+
+    <article class="right-column">
+      <h4>Transformations</h4>
+      <h5 id="little-lean">Little lean.</h5>
+      <pre>
+#little-lean {
+    -letter-transform: skew(-5deg) none
+                       none none
+                       none none
+                       skew(-5deg);
+}
+</pre>
+    </article>
+  </section>
+
+  <section id="more-specific" class="clearfix">
+    <h3>More specific</h3>
+    <article class="left-column">
+      <h4>Font conditionals</h4>
+      <h5 id="helvetica-fallback">Fallback? Yes.</h5>
+      <pre>
+#helvetica-fallback {
+    font-family: 'FakeFont',
+                 Helvetica Neue,
+                 sans-serif;
+    -word-color: -word-if-font(
+        'Helvetica Neue': #000 #ff0000
+    );
+}
+</pre>
+    </article>
+
+    <article class="right-column">
+      <h4>Pairings</h4>
+      <h5 id="mississippi">Mississippi.</h5>
+      <pre>
+#mississippi {
+    -letter-color: -letter-pairs(
+        'ss': #777,
+        'pp': #f5474b
+    );
+}
+</pre>
+    </article>
+  
+    <article class="left-column">
+      <h4>Repeats</h4>
+      <h5 id="double-bubble">Double bubble.</h5>
+      <pre>
+#double-bubble {
+    -letter-transform: -letter-repeats(
+        2n+1: translate3d(0,-5px,0),
+        even: translate3d(0,5px,0)
+    );
+}
+</pre>
+    </article>
+
+    <article class="right-column">
+      <h4>Vendor prefixes</h4>
+      <h5 id="red-on-webkit">Red on WebKit.</h5>
+      <pre>
+#red-on-webkit {
+    -webkit-word-color: #f5474b;
+}
+</pre>
+    </article>
+  </section>
+  
+  <section id="colophon" class="clearfix">
+    <h3>Colophon</h3>
+    <article class="left-column">
+      <p>An attempt to improve the web for designers by <a href="http://unwieldy.net">Joshua Gross</a>.</p>
+      <p>You should follow <a href="http://twitter.com/endtwist">Josh</a> on Twitter.</p>
+      <p>The Kerning.js logo and headers are set in <a href="http://typekit.com/fonts/garamond-premier-pro-caption">Garamond Premier Pro Caption</a>.</p>
+    </article>
+    <article clas="right-column">
+      <p>Thanks to the folks at <a href="http://paravelinc.com/">Paravel</a> for inspiration and <a href="http://letteringjs.com">Lettering.js</a>.</p>
+    </article>
+  </section>
+  
+  <a href="http://github.com/endtwist/kerning.js"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/c641758e06304bc53ae7f633269018169e7e5851/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script src="kerning.js"></script>
+  <script src="https://github.com/endtwist/kerning.js/raw/master/kerning.js"></script>
+  <script src="headsupgrid/hugrid.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+          gridonload = 'off';
+          pageUnits = 'px';
+          colUnits = 'px';
+          pagewidth = 724;
+          columns = 4;
+          columnwidth = 164;
+          gutterwidth = 24;
+          pagetopmargin = 50;
+          rowheight = 14;
+          makehugrid();
+          setgridonload();
+      });
+  </script>
 </body>
 </html>
