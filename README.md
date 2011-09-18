@@ -88,8 +88,8 @@ WebKit-only:
 
 Using repeat rules:
 
-    -letter-color: -letter-repeat(even: #f0f0f0, odd: #cccccc);
-    -letter-color: -letter-repeat(2n+1: #f0f0f0);
+    -letter-color: -letter-repeats(even: #f0f0f0, odd: #cccccc);
+    -letter-color: -letter-repeats(2n+1: #f0f0f0);
 
 
 Using conditionals:
@@ -109,6 +109,7 @@ License
 -------
 
 Copyright 2011 Joshua Gross
+
 MIT license
 
 Permission is hereby granted, free of charge, to any person

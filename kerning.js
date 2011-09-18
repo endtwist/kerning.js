@@ -613,7 +613,7 @@
         this.parse = function(css) {
             for(var selector in css) {
                 for(var property in css[selector]) {
-                    var match = property.match(new RegExp('^(-' + browserPrefix + '|' + osPrefix +')?-(letter|word)-(kern|transform|size|color)', 'i'));
+                    var match = property.match(new RegExp('^(-' + browserPrefix + '|-' + osPrefix +')?-(letter|word)-(kern|transform|size|color)', 'i'));
                     if (!match) continue;
 
                     var specificity = match[2].toLowerCase(),
