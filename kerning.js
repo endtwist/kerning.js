@@ -466,7 +466,7 @@
                         pairKeys = pairInfo[0];
 
                     pairDown = function(index) {
-                        var char1 = this.innerText.match(new RegExp(pairKeys[0])),
+                        var char1 = $(this).text().match(new RegExp(pairKeys[0])),
                             nextWord, char2;
                         if(pairKeys[1] !== ' ') {
                             char2 = ($(this).next().html() || '').match(new RegExp(pairKeys[1]));
