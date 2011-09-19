@@ -11,7 +11,7 @@
   <style type="text/css">
     html, body, div, span, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote,
-    abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+    abbr, address, cite, del, dfn, em, img, ins, kbd, q, samp,
     small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
     fieldset, form, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
@@ -48,15 +48,18 @@
             margin-bottom: 1.8rem;
         }
         
-        #colophon {
-            margin-top: -3.6rem;
+        #fouc, #colophon {
+            margin-top: -1.8rem;
         }
         
     article {
-        float: left;
         margin-bottom: 1.8rem;
-        width: 350px;
     }
+
+        article.left-column, article.right-column {
+            float: left;
+            width: 350px;
+        }
     
         article.left-column {
             margin-right: 24px;
@@ -168,6 +171,10 @@
         font-size: inherit !important;
     }
     
+    code {
+        padding: 0 0.3rem;
+    }
+    
     pre {
         background: #efefef;
         -webkit-box-shadow: 1px 1px 0 #cfcfcf,
@@ -269,7 +276,7 @@
   
   <section id="introduction">
     <p>CSS, meet kerning. Kerning, meet CSS. Kern, style, transform, and scale your web<br>type with real CSS rules, automatically.</p>
-    <p>Print designers have had it easy for way too long. This is 2011; the web has been around for a decade, yet web designers don&rsquo;t get full control over their typography? Forget that, use Kerning.js!</p>
+    <p>Print designers have had it easy for way too long. This is 2011; the web has been around for over a decade, yet web designers don&rsquo;t get full control over their typography? Forget that, use Kerning.js!</p>
   </section>
 
   <section id="getting-started">
@@ -378,6 +385,14 @@
     -webkit-word-color: #f5474b;
 }
 </pre>
+    </article>
+  </section>
+  
+  <section id="fouc" class="clearfix">
+    <h3>Preventing FOUC</h3>
+    <article>
+        <p>FOUCs (flashes of unstyled content) are gross and annoying, like a hair in your soup.</p>
+        <p>To prevent them, just add <code>visibility: hidden</code> to any selectors that are using Kerning.js rules. The script will automatically set <code>visibility: inherit</code> when it&rsquo;s done styling your content.</p>
     </article>
   </section>
   
