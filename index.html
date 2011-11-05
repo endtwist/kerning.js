@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7 ]> <html class="oldie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="oldie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="oldie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,28 +18,42 @@
     article, aside, canvas, details, figcaption, figure,
     footer, header, hgroup, menu, nav, section, summary,
     time, mark, audio, video {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      font-size: 100%;
-      font: inherit;
-      vertical-align: baseline;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
     }
+
     article, aside, details, figcaption, figure,
     footer, header, hgroup, menu, nav, section {
-      display: block;
+        display: block;
     }
-    body { font: 13px/1.231 "Helvetica Neue", Helvetica, sans-serif; }
     
     html, body {
         background: #fff;
     }
+
+    body {
+        font: 13px/1.231 "Helvetica Neue", Helvetica, sans-serif;
+    }
     
-    .clearfix:before, .clearfix:after { content: ""; display: table; }
-    .clearfix:after { clear: both; }
-    .clearfix { zoom: 1; }
+    .clearfix:before, .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        zoom: 1;
+    }
     
     header, section {
+        position: relative;
         width: 724px;
         margin: 0 auto 3.6rem;
     }
@@ -48,7 +62,7 @@
             margin-bottom: 1.8rem;
         }
         
-        #fouc, #colophon {
+        #dynamic-updating, #colophon {
             margin-top: -1.8rem;
         }
         
@@ -72,6 +86,10 @@
         #more-specific article {
             height: 18rem;
         }
+        
+            #more-specific .bottom {
+                height: 14.4rem;
+            }
 
     a {
         color: #f5474b;
@@ -84,7 +102,7 @@
         padding: 0 0 1.2rem;
     }
     
-        #getting-started p {
+        #getting-started p, #dynamic-updating p {
             padding: 0;
         }
     
@@ -151,10 +169,47 @@
             border: 15px solid;
             border-color: transparent transparent transparent #eee;
         }
+        
+            section:hover h3:before {
+                border-left-color: #ddd;
+            }
+    
+    h3.new {
+        position: absolute;
+        font: 400 1.4rem/1.4rem garamond-premier-pro-caption,serif;
+        left: -110px;
+        top: -2px;
+        background: #f5474b;
+        color: #fff;
+        padding: 11px 10px 9px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        -webkit-border-radius: 200px;
+        -moz-border-radius: 200px;
+        -o-border-radius: 200px;
+        border-radius: 200px;
+        z-index: 2000;
+    }
+    
+        h3.new span {
+            display: block;
+            font: 700 0.7rem/1.1rem "Helvetica Neue", Helvetica, sans-serif;
+        }
+    
+        h3.new:before {
+            display: none;
+        }
     
     h4 {
         font: italic 1.6rem/1.8rem garamond-premier-pro-caption,serif;
     }
+    
+        h4 code {
+            font-style: normal;
+            font-size: 1.4rem;
+            line-height: 1.8rem;
+        }
     
     h5 {
         visibility: hidden;
@@ -263,6 +318,30 @@
     #grey-on-mac {
         -mac-word-color: #777;
     }
+    
+    #oh-goodness {
+        font-size: 2.4rem;
+    
+        font-size: if-font(
+            'Helvetica Neue': 1.5rem
+        );
+    }
+    
+        .demo-off#oh-goodness {
+            font-size: 2.4rem !important;
+        }
+    
+    #thick-and-thin {
+        font-weight: 700;
+    
+        font-weight: if-font(
+            'Helvetica Neue': 400
+        );
+    }
+
+        .demo-off#thick-and-thin {
+            font-weight: 700 !important;
+        }
   </style>
   <script type="text/javascript" src="http://use.typekit.com/nfd4dzs.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -355,8 +434,8 @@
     font-family: 'FakeFont',
                  Helvetica Neue,
                  sans-serif;
-    -word-color: -word-if-font(
-        'Helvetica Neue': #000 #ff0000
+    -word-color: if-font(
+        'Helvetica Neue': #000 #f5474b
     );
 }
 </pre>
@@ -375,7 +454,7 @@
 </pre>
     </article>
   
-    <article class="left-column">
+    <article class="left-column bottom">
       <h4>Repeats</h4>
       <h5 id="double-bubble">Double bubble.</h5>
       <pre>
@@ -388,7 +467,7 @@
 </pre>
     </article>
 
-    <article class="right-column">
+    <article class="right-column bottom">
       <h4>Vendor prefixes</h4>
       <h5 id="red-on-webkit">Red on WebKit.</h5>
       <pre>
@@ -397,6 +476,49 @@
 }
 </pre>
     </article>
+  </section>
+  
+  <section id="augmenting" class="clearfix">
+    <h3 class="new"><span>New in</span>0.2</h3>
+    <h3>Augmented properties</h3>
+    
+    <article class="left-column">
+      <h4><code>font-size</code> conditional</h4>
+      <h5 id="oh-goodness">Oh, goodness.</h5>
+      <pre>
+#oh-goodness {
+    /* fallback if JS fails to load */
+    font-size: 2.4rem;
+
+    font-size: if-font(
+        'Helvetica Neue': 1.5rem
+    );
+}
+</pre>
+    </article>
+
+    <article class="right-column">
+      <h4><code>font-weight</code> conditional</h4>
+      <h5 id="thick-and-thin">Thick & thin.</h5>
+      <pre>
+#thick-and-thin {
+    /* fallback if JS fails to load */
+    font-weight: 700;
+
+    font-weight: if-font(
+        'Helvetica Neue': 400
+    );
+}
+</pre>
+    </article>
+  </section>
+  
+  <section id="dynamic-updating">
+    <h3 class="new"><span>New in</span>0.2</h3>
+    <h3>Dynamic updating</h3>
+    <p>Want to apply Kerning.js styles whenever a new element is added to your page?</p>
+    <pre>&lt;script&gt;$(function() { Kerning.live(); });&lt;/script&gt;</pre>
+    <p>That&rsquo;s it! Custom styles will automatically be applied when you insert a new element.</p>
   </section>
   
   <section id="fouc" class="clearfix">
