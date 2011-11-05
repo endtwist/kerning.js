@@ -10,6 +10,11 @@ Status
 
 This project is very much an early work-in-progress. While it is usable, there are no guarantees that it will not break or cause unintended effects.
 
+Version
+-------
+
+The current version is **0.2**.
+
 Usage
 -----
 Include this file anywhere in your HTML
@@ -19,8 +24,8 @@ Include this file anywhere in your HTML
 
 Then, add any of the attributes following to your CSS, under any selectors you want modified:
 
-    -letter-kern, -letter-size, -letter-color, -letter-transform
-    -word-kern, -word-size, -word-color, -word-transform
+    -letter-kern, -letter-size, -letter-weight, -letter-color, -letter-transform
+    -word-kern, -word-size, -word-weight, -word-color, -word-transform
 
 
 To use pairings (e.g., modify 'a' if 'ab' is paired):
@@ -94,22 +99,26 @@ Using repeat rules:
 
 Using conditionals:
 
-    -letter-kern: -letter-if-font('Helvetica Neue': 0 1px 1px, 'Helvetica': 0 -1px 0);
+    -letter-kern: if-font('Helvetica Neue': 0 1px 1px, 'Helvetica': 0 -1px 0);
 
+
+Using conditionals on existing properties for weight or size:
+
+    font-size: 9.5em;
+    font-size: if-font('Helvetica Neue': 10em, 'Helvetica': 9em);
 
 Future
 ------
 
-Right now, Kerning.js supports kerning, color, size, and transforms per-letter, per-word, and per-font. In the future, it will include:
+Right now, Kerning.js supports kerning, color, size, weight, and transforms per-letter, per-word, and per-font. In the future, it will include:
 
-* Application of rules on dynamically added or modified elements.
 * More compact and refined CSS rules
 * Visual kerning tool with automatic rule generation
 
 License
 -------
 
-Copyright 2011 Joshua Gross
+Copyright 2011 [Joshua Gross](http://unwieldy.net)
 
 MIT license
 

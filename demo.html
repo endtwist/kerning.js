@@ -49,12 +49,19 @@
     
     h1 {
         visibility: hidden;
-        font-size: 10em;
         /* You can skip -transform-groups if you don't use spaces in the transforms,
            and limit each letter to a single transform. */
         -letter-transform: -letter-repeats(even: rotate(5deg), odd: rotate(-5deg));
-        -letter-color: -letter-if-font('Helvetica Neue': -letter-repeats(even: #db9e36, odd: #bd4932));
+        -letter-color: if-font('Helvetica Neue': -letter-repeats(even: #db9e36, odd: #bd4932));
         -letter-kern: -letter-pairs('Ke': 2px, 'g.': 1px, '.j': -13px);
+        
+        /* Try removing "Helvetica Neue" from the body selector above and see what happens. */
+        font-size: 9em;
+        font-size: if-font('Helvetica Neue': 10em);
+        
+        font-weight: 700;
+        font-weight: if-font('Helvetica Neue': 400);
+
         text-shadow: 0 3px 5px rgba(189, 75, 50, 0.5);
     }
   </style>
