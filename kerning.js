@@ -611,6 +611,11 @@
                 methods._applyAttribute(type, elements, 'color', colors);
             },
 
+            backgroundcolor: function(type, elements, colors) {
+                console.log('test');
+                methods._applyAttribute(type, elements, 'background-color', colors);
+            },
+
             transform: function(type, elements, transforms) {
                 var attributes = [
                     '-webkit-transform'
@@ -636,7 +641,7 @@
                         value = css[selector][property];
 
                     // Kerning.js prefixed selectors
-                    if(match = property.match(new RegExp('^(-' + browserPrefix + '|-' + osPrefix +')?-(letter|word)-(kern|transform|size|color|weight)', 'i'))) {
+                    if(match = property.match(new RegExp('^(-' + browserPrefix + '|-' + osPrefix +')?-(letter|word)-(kern|transform|size|color|backgroundcolor|weight)', 'i'))) {
                         var specificity = match[2].toLowerCase(),
                             action = match[3].toLowerCase();
 
