@@ -577,7 +577,6 @@
                     } else {
                         var indexValues, keys, transformGroups;
                         // check for transform groups, as we need to parse these slightly differently
-
                         if(transformGroups = vals.match(/-transform-group\(([\s\S]+?\([^)]+\))*?\)/g)) {
                             indexValues = $.map(transformGroups, function(val, i) {
                                 return val.replace(/-transform-group\(([\s\S]+)\)$/, '$1');
@@ -639,7 +638,7 @@
                 methods._applyAttribute(type, elements, 'font-weight', weights);
             },
 
-            default: function(type, elements, attribute, property) {
+            default_property : function(type, elements, attribute, property) {
                 var attr_specifity = false;
                 if (jQuery.inArray(attribute, shortand_properties) != -1 && property.match(/^\(.*\)$/g)) {
                     attr_specifity = 'shortand_property';
@@ -668,7 +667,6 @@
                     var match,
                         elements,
                         value = css[selector][property];
-
                     // Kerning.js prefixed selectors
                     if(match = property.match(new RegExp('^(-' + browserPrefix + '|-' + osPrefix +')?-(letter|word)-(kern|size|weight)', 'i'))) {
                         var specificity = match[2].toLowerCase(),
@@ -703,7 +701,7 @@
                             .lettering('words').children('span').css('display', 'inline-block') // break down into words
                             .lettering().children('span').css('display', 'inline-block'); // break down into letters
 
-                        methods.default.call(this, specificity, elements, action, value);
+                        methods.default_property.call(this, specificity, elements, action, value);
 
                     // existing selectors with Kerning.js-custom values
                     }
