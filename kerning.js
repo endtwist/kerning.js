@@ -52,6 +52,9 @@
  *    -letter-color: -letter-repeat(even: #f0f0f0, odd: #cccccc);
  *    -letter-color: -letter-repeat(2n+1: #f0f0f0);
  *
+ *  Using shorthand properties: (don't forget brackets for each letter or each word)
+ *    -word-text-shadow: (1px 1px 0px rgba(0,0,0,0.5), 2px 2px 0px rgba(0,0,0,0.5)) _ (rgba(150,150,150,0.5) 1px 1px 0px, 2px 2px 0px yellow);
+ *
  *  Using conditionals:
  *    -letter-kern: if-font('Helvetica Neue': 0 1px 1px, 'Helvetica': 0 -1px 0);
  *
@@ -421,6 +424,9 @@
          * browsers and operating systems. We need CSS flags to allow for that.
          */
         var self = this
+          , basic_properties = ['background-color', 'color', 'transform'] // properties with a single unit
+          , prefixed_properties = ['border-radius', 'transform'] // 
+          , shortand_properties = ['background', 'box-shadow', 'border-radius', 'text-shadow']
           , nav = navigator.platform
           , browserPrefix = [
               'webkitTransform' in document.documentElement.style && 'webkit'
@@ -549,7 +555,7 @@
             },
 
             // Parse and apply a CSS property
-            _applyAttribute: function(type, elements, attribute, values) {
+            _applyAttribute: function(type, elements, attribute, values, attr_specifity) {
                 var conditional = methods._conditional(type, elements, values);
                 if(!conditional || !conditional.length)
                     conditional = [[values, elements]];
@@ -571,14 +577,36 @@
                     } else {
                         var indexValues, keys, transformGroups;
                         // check for transform groups, as we need to parse these slightly differently
+
                         if(transformGroups = vals.match(/-transform-group\(([\s\S]+?\([^)]+\))*?\)/g)) {
                             indexValues = $.map(transformGroups, function(val, i) {
                                 return val.replace(/-transform-group\(([\s\S]+)\)$/, '$1');
                             });
+                        }
+                        else if (attr_specifity == 'shortand_property') {
+                            var composedProperties = vals.match(/[()]|[^()]+/g),
+                                indexValues = [],
+                                balance = 0;
+                            
+                            for (var i=0, j=0; i<composedProperties.length; i++) {
+                                switch (composedProperties[i]) {
+                                case "(":
+                                    if (balance === 0) {
+                                        j = i;
+                                    }
+                                    balance++;
+                                    break;
+                                case ")":
+                                    if (balance === 1) {
+                                        indexValues.push(composedProperties.slice(j, i+1).join("").replace(/^\(/, '').replace(/\)$/, ''));
+                                    }
+                                    balance--;
+                                    break;
+                                }
+                            }
                         } else {
                             indexValues = vals.replace(/[\n\s]+/g, ' ').split(' ');
                         }
-
                         els.each(function(i, el) {
                             keys = type === 'all'
                                         ? $(el) // match the entire word (only used for certain use cases)
@@ -611,23 +639,21 @@
                 methods._applyAttribute(type, elements, 'font-weight', weights);
             },
 
-            color: function(type, elements, colors) {
-                methods._applyAttribute(type, elements, 'color', colors);
-            },
-
-            backgroundcolor: function(type, elements, colors) {
-                methods._applyAttribute(type, elements, 'background-color', colors);
-            },
-
-            transform: function(type, elements, transforms) {
-                var attributes = [
-                    '-webkit-transform'
-                  , '-moz-transform'
-                  , '-ms-transform'
-                  , '-o-transform'
-                  , 'transform'
-                ];
-                methods._applyAttribute(type, elements, attributes, transforms);
+            default: function(type, elements, attribute, property) {
+                var attr_specifity = false;
+                if (jQuery.inArray(attribute, shortand_properties) != -1 && property.match(/^\(.*\)$/g)) {
+                    attr_specifity = 'shortand_property';
+                }
+                if (jQuery.inArray(attribute, prefixed_properties) != -1) {
+                    var attribute = [
+                        '-webkit-'+attribute
+                      , '-moz-'+attribute
+                      , '-ms-'+attribute
+                      , '-o-'+attribute
+                      , attribute
+                    ];
+                }
+                methods._applyAttribute(type, elements, attribute, property, attr_specifity);
             }
         };
 
@@ -644,7 +670,7 @@
                         value = css[selector][property];
 
                     // Kerning.js prefixed selectors
-                    if(match = property.match(new RegExp('^(-' + browserPrefix + '|-' + osPrefix +')?-(letter|word)-(kern|transform|size|color|backgroundcolor|weight)', 'i'))) {
+                    if(match = property.match(new RegExp('^(-' + browserPrefix + '|-' + osPrefix +')?-(letter|word)-(kern|size|weight)', 'i'))) {
                         var specificity = match[2].toLowerCase(),
                             action = match[3].toLowerCase();
 
@@ -662,7 +688,26 @@
                             methods[action].call(this, specificity, elements, value);
 
                     // existing selectors with Kerning.js-custom values
-                    } else if((match = property.match(/font-(size|weight)/i)) && value.match(/if-font/i)) {
+                    }
+                    else if(match = property.match(new RegExp('^(-' + browserPrefix + '|-' + osPrefix +')?-(letter|word)-('+basic_properties.join('|')+'|'+shortand_properties.join('|')+')', 'i'))) {
+                        var specificity = match[2].toLowerCase(),
+                            action = match[3].toLowerCase();
+
+                        elements = $(selector);
+                        if(ignoreParsed)
+                            elements = elements.not('.kerningjs');
+
+                        elements
+                            .not('.kerningjs')
+                            .addClass('kerningjs').css('visibility', 'inherit')
+                            .lettering('words').children('span').css('display', 'inline-block') // break down into words
+                            .lettering().children('span').css('display', 'inline-block'); // break down into letters
+
+                        methods.default.call(this, specificity, elements, action, value);
+
+                    // existing selectors with Kerning.js-custom values
+                    }
+                    else if((match = property.match(/font-(size|weight)/i)) && value.match(/if-font/i)) {
                         var action = match[1].toLowerCase();
                         elements = $(selector);
                         if(ignoreParsed)
