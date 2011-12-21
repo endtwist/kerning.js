@@ -424,9 +424,9 @@
          * browsers and operating systems. We need CSS flags to allow for that.
          */
         var self = this
-          , basic_properties = ['background-color', 'color', 'transform', 'display'] // properties with a single unit
-          , prefixed_properties = ['border-radius', 'transform'] // 
-          , shortand_properties = ['background', 'box-shadow', 'border-radius', 'text-shadow']
+          , basic_properties = ['background-color', 'color', 'transform', 'display', 'font-family', 'opacity'] // properties with a single unit
+          , prefixed_properties = ['border-radius', 'transform', 'box-shadow'] // 
+          , shortand_properties = ['background', 'box-shadow', 'border-radius', 'text-shadow', 'padding', 'margin']
           , nav = navigator.platform
           , browserPrefix = [
               'webkitTransform' in document.documentElement.style && 'webkit'
