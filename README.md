@@ -8,7 +8,7 @@ Kerning.js is a single script, small, and has no dependencies. Add it to your pa
 Status
 ------
 
-This project is very much an early work-in-progress. While it is usable, there are no guarantees that it will not break or cause unintended effects.
+This project is currently stable. No major issues have been reported.
 
 Version
 -------
@@ -118,7 +118,7 @@ Right now, Kerning.js supports kerning, color, size, weight, and transforms per-
 License
 -------
 
-Copyright 2011 [Joshua Gross](http://unwieldy.net)
+Copyright 2012 [Joshua Gross](http://unwieldy.net)
 
 MIT license
 
