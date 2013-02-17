@@ -420,7 +420,7 @@
           , nav = navigator.platform
           , browserPrefix = [
               'webkitTransform' in document.documentElement.style && 'webkit'
-            , $.browser.msie && 'ms'
+			, navigator.userAgent.indexOf("MSIE") > -1 && 'ms'
             , "MozTransform" in document.documentElement.style && 'moz'
             , window.opera && 'o'
             ].reduce(function(pv, cv) { return pv + (cv || ''); })
