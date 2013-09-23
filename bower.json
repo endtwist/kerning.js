@@ -1,0 +1,24 @@
+{
+  "name": "kerning.js",
+  "main": "kerning.js",
+  "version": "0.2.0",
+  "homepage": "https://github.com/endtwist/kerning.js",
+  "authors": [
+    "Joshua Gross <joshua@gross.is>"
+  ],
+  "description": "CSS, meet kerning. Kerning, meet CSS. Kern, style, transform, and scale your web type with real CSS rules, automatically. Kerning.js is a single script, small, and has no dependencies. Add it to your page, add some CSS rules, and your text will be beautified.",
+  "keywords": [
+    "kerning",
+    "javascript",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "demo.html",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
