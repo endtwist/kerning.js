@@ -68,6 +68,21 @@
      * MIT license
      */
     (function() {
+    	// utility function to determine whether or not a URL has the same origin as the current location
+    	// See http://jsfiddle.net/35Jku/35/
+	var hasSameOrigin = function(url) {
+	    return url === url.replace(/^([^\/]*)\/\/([^@]*@)?([^\/:]+)(:\d+)?.*/, function(match, protocol, user, hostname, port, offset, string) {
+			protocol = (protocol === "") ? window.location.protocol : protocol;
+	        port = (port === undefined) ? "" : port.substring(1);      
+	        if (protocol !== window.location.protocol) 
+	            return ""; // "protocol mismatch: " + protocol + " vs. " + window.location.protocol
+	        if (hostname !== window.location.hostname) 
+	            return ""; // "hostname mismatch: " + hostname + " vs. " + window.location.hostname
+	        if (port !== window.location.port) 
+	            return ""; // "port mismatch: " + port + " vs. " + window.location.port
+	        return url;
+	    });
+	}    	
         // utility function, since we want to allow $('style') and $(document), so we need to look for elements in the jQuery object ($.fn.filter) and elements that are children of the jQuery object ($.fn.find)
         $.fn.findandfilter = function(selector) {
             var ret = this.filter(selector).add(this.find(selector));
@@ -85,7 +100,7 @@
                 .findandfilter('link[type="text/css"],link[rel="stylesheet"]')
                 .each(function(){
                     // only get the stylesheet if it's not disabled, it won't trigger cross-site security (doesn't start with anything like http:) and it uses the appropriate media)
-                    if(!this.disabled && !(/^\w+:/.test($(this).attr('href'))) && $.parsecss.mediumApplies(this.media))
+                    if(!this.disabled && hasSameOrigin(this.href) && $.parsecss.mediumApplies(this.media))
                         $.get(this.href, parse);
                 })
                 .end();
