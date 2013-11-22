@@ -1,7 +1,7 @@
 /*global jQuery */
 /*!
  * Kerning.js
- * Version: 0.2
+ * Version: 0.2.1
  * Copyright 2011 Joshua Gross
  * MIT license
  *
