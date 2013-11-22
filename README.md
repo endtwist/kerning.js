@@ -13,7 +13,7 @@ This project is currently stable. No major issues have been reported.
 Version
 -------
 
-The current version is **0.2**.
+The current version is **0.2.1**.
 
 Usage
 -----
