@@ -30,7 +30,7 @@
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
-    
+
     html, body {
         background: #fff;
     }
@@ -38,7 +38,7 @@
     body {
         font: 13px/1.231 "Helvetica Neue", Helvetica, sans-serif;
     }
-    
+
     .clearfix:before, .clearfix:after {
         content: "";
         display: table;
@@ -51,21 +51,21 @@
     .clearfix {
         zoom: 1;
     }
-    
+
     header, section {
         position: relative;
         width: 724px;
         margin: 0 auto 3.6rem;
     }
-    
+
         #introduction {
             margin-bottom: 1.8rem;
         }
-        
+
         #dynamic-updating, #colophon {
             margin-top: -1.8rem;
         }
-        
+
     article {
         margin-bottom: 1.8rem;
     }
@@ -74,19 +74,19 @@
             float: left;
             width: 350px;
         }
-    
+
         article.left-column {
             margin-right: 24px;
         }
-        
+
         #features article {
             height: 14.4rem;
         }
-        
+
         #more-specific article {
             height: 18rem;
         }
-        
+
             #more-specific .bottom {
                 height: 14.4rem;
             }
@@ -101,11 +101,11 @@
         line-height: 1.8rem;
         padding: 0 0 1.2rem;
     }
-    
+
         #getting-started p, #dynamic-updating p {
             padding: 0;
         }
-    
+
     h1 {
         position: relative;
         font: 10rem garamond-premier-pro-caption,serif;
@@ -114,11 +114,11 @@
         margin: 0 0 0 -0.75rem;
         line-height: 18rem;
     }
-    
+
         h1 .char1, h1 .char7, h1 .char8 {
             border-right: 1px solid transparent;
         }
-    
+
         h1:hover .char1, h1:hover .char7, h1:hover .char8 {
             border-color: #ccc;
         }
@@ -132,11 +132,11 @@
             border: 5px solid;
             border-color: transparent #ccc transparent transparent;
         }
-        
+
             h1:hover .char2:before {
                 left: 6.9rem;
             }
-            
+
             h1:hover .char8:before {
                 left: 32.15rem;
             }
@@ -144,7 +144,7 @@
             h1:hover .char9:before {
                 left: 34.6rem;
             }
-    
+
     h2 {
         position: relative;
         top: -5.6rem;
@@ -153,12 +153,12 @@
         color: #f5474b;
         pointer-events: none;
     }
-    
+
     h3 {
         position: relative;
         font: 700 2.4rem/3.6rem garamond-premier-pro-caption,serif;
     }
-    
+
         h3:before {
             content: '';
             position: absolute;
@@ -169,11 +169,11 @@
             border: 15px solid;
             border-color: transparent transparent transparent #eee;
         }
-        
+
             section:hover h3:before {
                 border-left-color: #ddd;
             }
-    
+
     h3.new {
         position: absolute;
         font: 400 1.4rem/1.4rem garamond-premier-pro-caption,serif;
@@ -191,31 +191,31 @@
         border-radius: 200px;
         z-index: 2000;
     }
-    
+
         h3.new span {
             display: block;
             font: 700 0.7rem/1.1rem "Helvetica Neue", Helvetica, sans-serif;
         }
-    
+
         h3.new:before {
             display: none;
         }
-    
+
     h4 {
         font: italic 1.6rem/1.8rem garamond-premier-pro-caption,serif;
     }
-    
+
         h4 code {
             font-style: normal;
             font-size: 1.4rem;
             line-height: 1.8rem;
         }
-    
+
     h5 {
         visibility: hidden;
         font: 700 2.4rem/3.6rem 'Helvetica Neue', Arial, Helvetica, sans-serif;
     }
-    
+
     h1.demo-off span, h5.demo-off span {
         color: #000 !important;
         -webkit-transform: none !important;
@@ -225,11 +225,11 @@
         margin: 0 !important;
         font-size: inherit !important;
     }
-    
+
     code {
         padding: 0 0.3rem;
     }
-    
+
     pre {
         background: #efefef;
         -webkit-box-shadow: 1px 1px 0 #cfcfcf,
@@ -240,7 +240,7 @@
         -webkit-transition: all 0.1s linear;
         padding: 20px;
     }
-    
+
         pre:hover {
             -webkit-box-shadow: 1px 1px 0 #afafaf,
                                 2px 2px 0 #afafaf,
@@ -254,86 +254,86 @@
                                 10px 10px 0 #afafaf;
             -webkit-transform: translate3d(-5px,-5px,0);
         }
-    
+
     #toggle-demo {
         position: fixed;
         top: 0.5rem;
         right: 60px;
     }
-    
+
         #toggle-demo span {
             font-weight: 700;
         }
-    
+
     #hello-goodbye {
         -letter-size: _ _ _ _ _ 0.5em;
     }
-    
+
     #pixel-perfect {
         -letter-kern: 1px 1px 0 0 0
                       1px 0 2px 0 0
                       0 0 0;
     }
-    
+
     #pantone-please {
         /* #f5474b is Pantone Red 032 M, if you were curious. */
         -word-color: #f5474b #000000;
     }
-    
+
     #little-lean {
         -letter-transform: skew(-5deg) none
                            none none
                            none none
                            skew(-5deg);
     }
-    
+
     #helvetica-fallback {
         font-family: 'FakeFont',
                      Helvetica Neue,
                      sans-serif;
-    
+
         -word-color: -word-if-font(
             'Helvetica Neue': #000 #f5474b
         );
     }
-    
+
     #mississippi {
         -letter-color: -letter-pairs(
             'ss': #777,
             'pp': #f5474b
         );
     }
-    
+
     #double-bubble {
         -letter-transform: -letter-repeats(
             2n+1: translate3d(0,-5px,0),
             even: translate3d(0,5px,0)
         );
     }
-    
+
     #red-on-webkit {
         -webkit-word-color: #f5474b;
     }
-    
+
     #grey-on-mac {
         -mac-word-color: #777;
     }
-    
+
     #oh-goodness {
         font-size: 2.4rem;
-    
+
         font-size: if-font(
             'Helvetica Neue': 1.5rem
         );
     }
-    
+
         .demo-off#oh-goodness {
             font-size: 2.4rem !important;
         }
-    
+
     #thick-and-thin {
         font-weight: 700;
-    
+
         font-weight: if-font(
             'Helvetica Neue': 400
         );
@@ -363,10 +363,10 @@
     <h1>Kerning.js</h1>
     <h2>Take control of your web typography.</h2>
   </header>
-  
+
   <section id="introduction">
     <p>CSS, meet kerning. Kerning, meet CSS. Kern, style, transform, and scale your web<br>type with real CSS rules, automatically.</p>
-    <p>Print designers have had it easy for way too long. This is 2012; the web has been around for over two decades, yet web designers don&rsquo;t get full control over their typography? Forget that, use Kerning.js!</p>
+    <p>Print designers have had it easy for way too long. This is 2014; the web has been around for over two decades, yet web designers don&rsquo;t get full control over their typography? Forget that, use Kerning.js!</p>
   </section>
 
   <section id="getting-started">
@@ -375,7 +375,7 @@
     <pre>&lt;script src="kerning.js"&gt;&lt;/script&gt;</pre>
     <p>Done.</p>
   </section>
-  
+
   <section id="features" class="clearfix">
     <h3>Features</h3>
     <article class="left-column">
@@ -453,7 +453,7 @@
 }
 </pre>
     </article>
-  
+
     <article class="left-column bottom">
       <h4>Repeats</h4>
       <h5 id="double-bubble">Double bubble.</h5>
@@ -477,11 +477,11 @@
 </pre>
     </article>
   </section>
-  
+
   <section id="augmenting" class="clearfix">
     <h3 class="new"><span>New in</span>0.2</h3>
     <h3>Augmented properties</h3>
-    
+
     <article class="left-column">
       <h4><code>font-size</code> conditional</h4>
       <h5 id="oh-goodness">Oh, goodness.</h5>
@@ -512,7 +512,7 @@
 </pre>
     </article>
   </section>
-  
+
   <section id="dynamic-updating">
     <h3 class="new"><span>New in</span>0.2</h3>
     <h3>Dynamic updating</h3>
@@ -520,7 +520,7 @@
     <pre>&lt;script&gt;$(function() { Kerning.live(); });&lt;/script&gt;</pre>
     <p>That&rsquo;s it! Custom styles will automatically be applied when you insert a new element.</p>
   </section>
-  
+
   <section id="fouc" class="clearfix">
     <h3>Preventing FOUC</h3>
     <article>
@@ -528,7 +528,7 @@
         <p>To prevent them, just add <code>visibility: hidden</code> to any selectors that are using Kerning.js rules. The script will automatically set <code>visibility: inherit</code> when it&rsquo;s done styling your content.</p>
     </article>
   </section>
-  
+
   <section id="colophon" class="clearfix">
     <h3>Colophon</h3>
     <article class="left-column">
@@ -540,12 +540,12 @@
       <p>Thanks to the folks at <a href="http://paravelinc.com/" target="_top">Paravel</a> for inspiration and <a href="http://letteringjs.com" target="_top">Lettering.js</a>.</p>
     </article>
   </section>
-  
+
   <a href="#" id="toggle-demo">Turn demo <span>off</span></a>
   <a href="http://github.com/endtwist/kerning.js" target="_top" style="position: absolute; top: 0; left: 0;"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script src="https://github.com/endtwist/kerning.js/raw/master/kerning.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="http://rawgithub.com/endtwist/kerning.js/master/kerning.js"></script>
   <script src="headsupgrid/hugrid.js"></script>
   <script type="text/javascript">
       $(document).ready(function() {
@@ -560,7 +560,7 @@
           rowheight = 14;
           makehugrid();
           setgridonload();
-          
+
           $('#toggle-demo').click(function() {
               $('h1, h5').toggleClass('demo-off');
               $('span', this).html($('h1').hasClass('demo-off') ? 'on' : 'off');
