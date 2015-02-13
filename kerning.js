@@ -445,7 +445,7 @@
                   , isTransform = pairString.match(/translate|rotate|skew|perspective/i)
 
                     // matches and splits the pairing rules
-                  , pairs = $.trim(usingPairs[2].replace(/,\s+?'/g, ",'").replace(/:\s+?(\d)/g, ':$1')).split(isTransform ? '),' : ',')
+                  , pairs = $.trim(usingPairs[2].replace(/,\s+?['"]/g, ",'").replace(/:\s+?(\d)/g, ':$1')).split(isTransform ? '),' : ',')
                   
                   , pairInfo, pairKeys, pairDown
                   , pairElements = [];
