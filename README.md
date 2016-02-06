@@ -3,7 +3,7 @@ Kerning.js
 
 CSS, meet kerning. Kerning, meet CSS. Kern, style, transform, and scale your web type with real CSS rules, automatically.
 
-Kerning.js is a single script, small, and has no dependencies. Add it to your page, add some CSS rules, and your text will be beautified.
+Kerning.js is a single script, small, and only depends on jQuery. Add it to your page, add some CSS rules, and your text will be beautified.
 
 Status
 ------
