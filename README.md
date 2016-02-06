@@ -118,7 +118,7 @@ Right now, Kerning.js supports kerning, color, size, weight, and transforms per-
 License
 -------
 
-Copyright 2012 [Joshua Gross](http://unwieldy.net)
+Copyright 2016 [Joshua Gross](http://gross.is)
 
 MIT license
 
